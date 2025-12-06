@@ -14,7 +14,7 @@ if (empty($furniture_type) || empty($budget) || empty($style)) {
     exit();
 }
 
-$n8n_webhook_url = 'https://shanlu.app.n8n.cloud/webhook-test/furniture-ai';
+$n8n_webhook_url = 'https://shanlu.app.n8n.cloud/webhook/furniture-ai';
 
 // prepare data to send to n8n
 $data = array(
