@@ -132,12 +132,6 @@ $generated_html = $ai_response['html'] ?? '';
         </div>
     <?php endif; ?>
 
-    <?php if (!empty($generated_html)): ?>
-        <div class="ai-generated-content">
-            <?php echo $generated_html; ?>
-        </div>
-    <?php endif; ?>
-
     <?php if (!empty($products)): ?>
         <div class="products-grid">
             <?php foreach ($products as $product): ?>
@@ -163,6 +157,12 @@ $generated_html = $ai_response['html'] ?? '';
     <?php else: ?>
         <div style="text-align: center; padding: 40px; background: white; border-radius: 10px;">
             <p style="font-size: 18px; color: #999;">No products were generated. Please try again.</p>
+        </div>
+    <?php endif; ?>
+
+    <?php if (!empty($generated_html)): ?>
+        <div class="ai-generated-content">
+            <?php echo $generated_html; ?>
         </div>
     <?php endif; ?>
 

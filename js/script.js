@@ -25,25 +25,35 @@ if (furnitureForm) {
     });
 }
 
-// Furniture type change
-if (furnitureSelect) {
-    furnitureSelect.addEventListener('change', function() {
-        const otherContainer = document.getElementById('other_furniture_container');
-        const otherInput = document.getElementById('other_furniture');
+// dynamic price range values
+document.addEventListener('DOMContentLoaded', function() {
+    const priceSlider = document.getElementById('priceSlider');
+    const priceDisplay = document.getElementById('priceDisplay');
+    const budgetValue = document.getElementById('budgetValue');
 
-        if (!otherContainer || !otherInput) return;
+    // Define price ranges
+    const priceRanges = [
+        '₱0 - ₱5,000',
+        '₱5,000 - ₱25,000',
+        '₱25,000 - ₱50,000',
+        '₱50,000 - ₱100,000',
+        '₱100,000 - ₱185,000'
+    ];
 
-        if (this.value === 'Other') {
-            otherContainer.style.display = 'block';
-            otherInput.required = true;
-            otherInput.focus();
-        } else {
-            otherContainer.style.display = 'none';
-            otherInput.required = false;
-            otherInput.value = '';
-        }
+    // Update display when slider moves
+    priceSlider.addEventListener('input', function() {
+        const index = parseInt(this.value);
+        const range = priceRanges[index];
+
+        // Update display
+        priceDisplay.textContent = range;
+        budgetValue.value = range;
+
+        // Optional: Change color based on price
+        const colors = ['text-green-600', 'text-blue-600', 'text-yellow-600', 'text-orange-600', 'text-red-600'];
+        priceDisplay.className = `font-semibold ${colors[index]}`;
     });
 
-    // Initialize on page load
-    furnitureSelect.dispatchEvent(new Event('change'));
-}
+    // Initialize display
+    priceSlider.dispatchEvent(new Event('input'));
+});

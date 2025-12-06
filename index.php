@@ -24,54 +24,62 @@
 
     <form id="furnitureForm" method="POST" action="generate.php">
         <div class="form-group">
-            <label for="furniture_type">What type of furniture are you looking for?</label>
-            <select id="furniture_type" name="furniture_type" required>
-                <option value="">Select a type...</option>
-                <option value="Sofa">Sofa</option>
-                <option value="Bed">Bed</option>
-                <option value="Dining Table">Dining Table</option>
-                <option value="Chair">Chair</option>
-                <option value="Desk">Desk</option>
-                <option value="Coffee Table">Coffee Table</option>
-                <option value="Bookshelf">Bookshelf</option>
-                <option value="Wardrobe">Wardrobe</option>
-                <option value="TV Stand">TV Stand</option>
-                <option value="Nightstand">Nightstand</option>
-                <option value="Other">Other (please specify)</option>
+            <label for="furniture_type" class="block text-sm font-medium text-gray-900 mb-2">
+                What type of furniture are you looking for?
+            </label>
+
+            <select id="furniture_type" name="furniture_type" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                <option value="">Select categories...</option>
+
+                <optgroup label="🛋️ Living Room">
+                    <option value="Sofa">Sofa / Couch</option>
+                    <option value="Sectional Sofa">Sectional Sofa</option>
+                    <option value="Living Room Set">Living Room Set</option>
+                    <option value="TV Stand">TV Stand / Entertainment Center</option>
+                    <option value="Coffee Table">Coffee Table</option>
+                    <option value="Side Table">Side Table / End Table</option>
+                    <option value="Accent Chair">Accent Chair / Recliner</option>
+                    <option value="Bookshelf">Bookshelf / Display Cabinet</option>
+                    <option value="Console Table">Console Table</option>
+                </optgroup>
+
+                <optgroup label="🛏️ Bedroom">
+                    <option value="Bed Frame">Bed / Bed Frame</option>
+                    <option value="Mattress">Mattress</option>
+                    <option value="Bedroom Set">Bedroom Set</option>
+                    <option value="Nightstand">Nightstand / Bedside Table</option>
+                    <option value="Dresser">Dresser / Chest</option>
+                    <option value="Wardrobe">Wardrobe / Closet</option>
+                    <option value="Vanity Table">Vanity Table</option>
+                    <option value="Bed Bench">Bed Bench / Ottoman</option>
+                </optgroup>
+
+                <optgroup label="🍽️ Dining Room">
+                    <option value="Dining Table">Dining Table</option>
+                    <option value="Dining Chair">Dining Chair</option>
+                    <option value="Dining Set">Dining Set</option>
+                    <option value="Bar Stool">Bar Stool / Counter Stool</option>
+                    <option value="Buffet">Buffet / Sideboard</option>
+                </optgroup>
+
+                <optgroup label="💼 Home Office">
+                    <option value="Desk">Desk / Writing Table</option>
+                    <option value="Office Chair">Office Chair</option>
+                    <option value="Filing Cabinet">Filing Cabinet</option>
+                    <option value="Office Bookshelf">Office Bookshelf</option>
+                </optgroup>
+
+                <optgroup label="📦 Storage">
+                    <option value="Accent Cabinet">Accent Cabinet</option>
+                    <option value="Display Shelf">Display Shelf</option>
+                    <option value="Room Divider">Room Divider</option>
+                    <option value="Shoe Rack">Shoe Rack / Organizer</option>
+                    <option value="Bar Cart">Bar Cart</option>
+                </optgroup>
             </select>
-
-            <div id="other_furniture_container" style="display: none; margin-top: 15px;">
-                <label for="other_furniture">Please specify:</label>
-                <input type="text" id="other_furniture" name="other_furniture"
-                       placeholder="e.g., Ottoman, Dresser, Bench, etc.">
-            </div>
-
         </div>
 
         <div class="form-group">
-            <label>What's your budget?</label>
-            <div class="price-options">
-                <div class="price-option">
-                    <input type="radio" id="budget_under_2k" name="budget" value="₱0 - 1,999" required>
-                    <label for="budget_under_2k">₱0 - 1,999<br><br></label>
-                </div>
-                <div class="price-option">
-                    <input type="radio" id="budget_2k_4k" name="budget" value="₱2,000 - 3,999" required>
-                    <label for="budget_2k_4k">₱2,000 - 3,999</label>
-                </div>
-                <div class="price-option">
-                    <input type="radio" id="budget_4k_6k" name="budget" value="₱4,000 - 5,999" required>
-                    <label for="budget_4k_6k">₱4,000 - 5,999</label>
-                </div>
-                <div class="price-option">
-                    <input type="radio" id="budget_6k_8k" name="budget" value="₱6,000 - 7,999" required>
-                    <label for="budget_6k_8k">₱6,000 - 7,999</label>
-                </div>
-                <div class="price-option">
-                    <input type="radio" id="budget_over_8k" name="budget" value="₱8,000+" required>
-                    <label for="budget_over_8k">₱8,000+</label>
-                </div>
-            </div>
 
             <div class="form-group">
                 <label for="priceSlider" class="block text-sm font-medium text-gray-900 mb-2">
@@ -95,70 +103,59 @@
                     <!-- Custom markers with labels -->
                     <div class="flex justify-between px-1 mt-2">
                         <span class="text-xs text-gray-500">₱0-5k</span>
-                        <span class="text-xs text-gray-500">₱5-10k</span>
-                        <span class="text-xs text-gray-500">₱10-20k</span>
-                        <span class="text-xs text-gray-500">₱20-40k</span>
-                        <span class="text-xs text-gray-500">₱40k+</span>
+                        <span class="text-xs text-gray-500">₱5-25k</span>
+                        <span class="text-xs text-gray-500">₱25-50k</span>
+                        <span class="text-xs text-gray-500">₱50-100k</span>
+                        <span class="text-xs text-gray-500">₱100-185k</span>
                     </div>
                 </div>
 
                 <!-- Budget ranges mapping (hidden) -->
-                <div id="priceRanges" data-ranges='["₱0 - ₱5,000", "₱5,000 - ₱10,000", "₱10,000 - ₱20,000", "₱20,000 - ₱40,000", "₱40,000+"]'></div>
+                <div id="priceRanges" data-ranges='["₱0 - ₱5,000", "₱5,000 - ₱25,000", "₱25,000 - ₱50,000", "₱50,000 - ₱100,000", "₱100,000 - ₱185,000"]'></div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="style">What style do you prefer?</label>
-            <select name="style" id="style" required>
-                <option value="">Choose your preferred style...</option>
+            <label for="style" class="block text-sm font-medium text-gray-900 mb-2">
+                What's your preferred style?
+            </label>
 
-                <optgroup label="✨ Clean & Simple">
-                    <option value="Modern">Modern - Clean lines, neutral colors</option>
-                    <option value="Minimalist">Minimalist - Very simple, less clutter</option>
-                    <option value="Scandinavian">Scandinavian - Simple + cozy (like IKEA)</option>
-                    <option value="Contemporary">Contemporary - Current, trendy simple</option>
+            <select name="style" id="style" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                <option value="">Choose a style</option>
+
+                <optgroup label="🌟 Most Popular at OurHome.ph">
+                    <option value="Modern">Modern - Clean & minimalist</option>
+                    <option value="Scandinavian">Scandinavian - Light, functional (like IKEA)</option>
+                    <option value="Contemporary">Contemporary - Current trends</option>
                 </optgroup>
 
-                <optgroup label="🏛️ Classic & Timeless">
-                    <option value="Traditional">Traditional - Elegant, timeless pieces</option>
-                    <option value="Transitional">Transitional - Classic with modern touch</option>
-                    <option value="Victorian">Victorian - Ornate, detailed, luxurious</option>
-                    <option value="French Country">French Country - Rustic elegance</option>
+                <optgroup label="🛋️ Classic Styles">
+                    <option value="Traditional">Traditional - Classic, ornate details</option>
+                    <option value="Transitional">Transitional - Mix of classic & modern</option>
+                    <option value="Mid-Century">Mid-Century - 1950s/60s retro style</option>
                 </optgroup>
 
-                <optgroup label="🕰️ Vintage & Retro">
-                    <option value="Mid-Century Modern">Mid-Century - 1950s/60s retro style</option>
-                    <option value="Industrial">Industrial - Factory/warehouse look</option>
-                    <option value="Art Deco">Art Deco - 1920s glam, geometric</option>
-                    <option value="Retro">Retro - 70s/80s nostalgic</option>
+                <optgroup label="🌿 Natural & Rustic">
+                    <option value="Farmhouse">Farmhouse - Rustic, country charm</option>
+                    <option value="Industrial">Industrial - Metal, raw materials</option>
+                    <option value="Coastal">Coastal - Beachy, light colors</option>
                 </optgroup>
 
-                <optgroup label="🏡 Natural & Rustic">
-                    <option value="Rustic">Rustic - Farmhouse, natural wood</option>
-                    <option value="Farmhouse">Farmhouse - Country living comfort</option>
-                    <option value="Cottage">Cottage - Charming, quaint, cozy</option>
-                    <option value="Japanese">Japanese - Zen, peaceful, natural</option>
-                </optgroup>
-
-                <optgroup label="🎨 Colorful & Creative">
-                    <option value="Bohemian">Bohemian - Colorful, mixed patterns</option>
-                    <option value="Eclectic">Eclectic - Mixed styles creatively</option>
-                    <option value="Tropical">Tropical - Vibrant, plants, vacation vibe</option>
-                    <option value="Maximalist">Maximalist - Bold, layered, dramatic</option>
-                </optgroup>
-
-                <optgroup label="🌊 Fresh & Airy">
-                    <option value="Coastal">Coastal - Beach house, light colors</option>
-                    <option value="Hamptons">Hamptons - Classic beach elegance</option>
-                    <option value="Mediterranean">Mediterranean - Sunny, warm, textured</option>
-                    <option value="California Casual">California Casual - Relaxed, indoor-outdoor</option>
+                <optgroup label="🎨 Creative & Colorful">
+                    <option value="Bohemian">Bohemian - Colorful, eclectic mix</option>
+                    <option value="Tropical">Tropical - Vibrant, island vibe</option>
+                    <option value="Minimalist">Minimalist - Simple, clutter-free</option>
                 </optgroup>
             </select>
+
+            <div class="mt-2 text-xs text-gray-500">
+                💡 Based on ourhome.ph's actual furniture collections
+            </div>
         </div>
 
         <button type="submit" id="submitBtn">Generate My Collection</button>
         <div class="mt-6">
-            <p class="text-center text-gray-500 text-xs">Data based on <a href="https://ourhome.ph/collections/furniture" class="text-blue-500" target="_blank">ourhome.ph</a></p>
+            <p class="text-center text-gray-500 text-xs">📊 Data based on <a href="https://ourhome.ph/collections/furniture" class="text-blue-500" target="_blank">ourhome.ph</a></p>
         </div>
 
         <div class="loading" id="loading">
