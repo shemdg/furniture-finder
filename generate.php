@@ -8,7 +8,7 @@ $furniture_type = $_POST['furniture_type'] ?? '';
 $budget = $_POST['budget'] ?? '';
 $style = $_POST['style'] ?? '';
 
-// validate inputs
+// empty validate inputs
 if (empty($furniture_type) || empty($budget) || empty($style)) {
     header('Location: index.php');
     exit();
@@ -80,7 +80,7 @@ if (isset($ai_response[0])) {
     $ai_response = $ai_response[0];
 }
 
-$page_title = $ai_response['title'] ?? 'Your Personalized Furniture Collection';
+$page_title = $ai_response['title'] ?? '';
 $description = $ai_response['description'] ?? '';
 $products = $ai_response['products'] ?? array();
 $generated_html = $ai_response['html'] ?? '';
@@ -92,6 +92,7 @@ $generated_html = $ai_response['html'] ?? '';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($page_title); ?></title>
+    <link rel="icon" href="https://www.svgrepo.com/show/424304/furniture-house-living-17.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/generate.css">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>

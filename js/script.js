@@ -10,18 +10,6 @@ if (furnitureForm) {
 
         if (submitBtn) submitBtn.disabled = true;
         if (loading) loading.classList.add('active');
-
-        // Validate "Other" field if needed
-        if (furnitureSelect && furnitureSelect.value === 'Other') {
-            const otherInput = document.getElementById('other_furniture');
-            if (otherInput && !otherInput.value.trim()) {
-                e.preventDefault();
-                alert('Please specify the furniture type.');
-                otherInput.focus();
-                if (submitBtn) submitBtn.disabled = false;
-                if (loading) loading.classList.remove('active');
-            }
-        }
     });
 }
 
@@ -49,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         priceDisplay.textContent = range;
         budgetValue.value = range;
 
-        // Optional: Change color based on price
+        // change color based on price for better user experience
         const colors = ['text-green-600', 'text-blue-600', 'text-yellow-600', 'text-orange-600', 'text-red-600'];
         priceDisplay.className = `font-semibold ${colors[index]}`;
     });
